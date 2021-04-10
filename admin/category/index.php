@@ -26,10 +26,10 @@ require_once('../../common/utility.php');
 			<a class="nav-link active" href="#">Category Management</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="../product/">Product Management</a>
+			<a class="nav-link" href="#">Product Management</a>
 		</li>
 		<li class="nav-item">
-	  	<a class="nav-link" href="../order/">Order Management</a>
+	  	<a class="nav-link" href="#">Order Management</a>
 	  </li>	
 	</ul>
 
@@ -83,7 +83,7 @@ require_once('../../common/utility.php');
 		$additional = '';
 
 		if (!empty($s)) {
-			$additional = 'and name like "%'.$s.'%" ';
+			$additional = 'and cat_name like "%'.$s.'%" ';
 		}
 		$sql = 'select * from category where 1 '.$additional.' limit '.$firstIndex.','.$limit;
 		$categoryList = executeResult($sql);
@@ -98,13 +98,13 @@ require_once('../../common/utility.php');
 			echo '
 				<tr>
 					<td>'.(++$firstIndex).'</td>
-					<td>'.$item['name'].'</td>
+					<td>'.$item['cat_name'].'</td>
 					<td>'.$item['descripition'].'</td>
 					<td>
-						<a href="add.php?id='.$item['name'].'"><buttom class="btn btn-warning">Repair</buttom></a>
+						<a href="add.php?id='.$item['cat_name'].'"><buttom class="btn btn-warning">Repair</buttom></a>
 					</td>
 					<td>
-						<buttom class="btn btn-danger" onclick="deleteCategory('.$item['name'].')">Delete</buttom>
+						<buttom class="btn btn-danger" onclick="deleteCategory('.$item['cat_name'].')">Delete</buttom>
 					</td>
 				</tr>';
 		}
@@ -126,7 +126,7 @@ require_once('../../common/utility.php');
 			console.log(id)
 			//ajax - lenh post
 			$.post('ajax.php', {
-				'name': name,
+				'cat_name': cat_name,
 				'action': 'delete',
 			}, function(data){
 				location.reload()
