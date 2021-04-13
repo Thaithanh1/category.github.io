@@ -1,4 +1,5 @@
 <?php 
+    require_once ('dbhelp.php');
     include("menu.php");
     function function_alert($message) { 
          // Display the alert box  
