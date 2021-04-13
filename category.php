@@ -48,7 +48,7 @@ if(isset($_POST['add'])){
   
  </style>
  <div class="container">
-  <h2 style="text-align: center">Product Management</h2>       
+  <h2 style="text-align: center">Category Management</h2>       
   <table class="table table-striped">
     <thead>
       <tr>
