@@ -1,5 +1,4 @@
 <?php 
-    require_once ('dbhelp.php');
     include("menu.php");
     function function_alert($message) { 
          // Display the alert box  
@@ -72,17 +71,20 @@ if(isset($_POST['add'])){
       </tr>
     </thead>
     <tbody>
-        <?php while ($item = pg_fetch_array($query)){ ?>
+        <?php
+            $query = pg_query($conn, "SELECT * FROM product");
+            while ($item = pg_fetch_array($query)){ 
+        ?>
         <tr>
           <th scope="row"><?= $item['product_id'] ?></th>
-          <td><img style="width: 180px; height: 180px;" title="<?= $item['product_name']  ?>" src="images/<?= $item['image'] ?>"></td>
+          <td><img style="width: 120px; height: 120px;" title="<?= $item['product_name']  ?>" src="images/<?= $item['image'] ?>"></td>
           <td><?=   $item['product_name']   ?></td>
           <td><?=   $item['supplier']       ?></td>
           <td><?=   $item['cat_name']       ?></td>
           <td><?=   $item['description']    ?></td>
           <td><?= number_format($item['price'],2) ?> $</td>
           <td><?= $item['date_modified'] ?></td>
-          <td style="text-align: center;"><a href="product.php?edit=<?= $item['product_id'] ?>"><span style="font-size: 20px;"><i style="color:#FF0094 ; " class="far fa-edit"></i></span></a></td>
+          <td style="text-align: center;"><a href="updatepd.php?edit=<?= $item['product_id'] ?>"><span style="font-size: 20px;"><i style="color:#FF0094 ; " class="far fa-edit"></i></span></a></td>
           <td style="text-align: center;"><a href="product.php?del=<?= $item['product_id'] ?>"><span style="font-size: 20px;"><i style="color:#FF0094 ; " class="far fa-trash-alt"></i></span></a></td>
         </tr>
         <?php } ?>       
