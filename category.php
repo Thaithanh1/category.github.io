@@ -7,7 +7,7 @@
 
 // Click Del icon
 if(isset($_GET['del'])){ 
-  //$cat = $_GET['del'];
+  $cat = $_GET['del'];
   $sql = "DELETE FROM category WHERE cat_name = $cat";
   if($query = pg_query($conn, $sql)){
     
