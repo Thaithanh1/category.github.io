@@ -7,13 +7,13 @@
 
 // Click Del icon
 if(isset($_GET['del'])){ 
-  $id = $_GET['del'];
+  $cat = $_GET['del'];
   $sql = "DELETE FROM category WHERE cat_name = $cat";
   if($query = pg_query($conn, $sql)){
     
     function_alert('Deleted success fully!');
 
-    header('location:product.php');
+    header('location:category.php');
   }
 }
 
