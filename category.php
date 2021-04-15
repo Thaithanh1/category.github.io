@@ -32,6 +32,17 @@ if(isset($_POST['add'])){
       }
 }      
  ?>
+<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
  <style type="text/css">
    input{
     border: none;
@@ -48,8 +59,10 @@ if(isset($_POST['add'])){
   
  </style>
  <div class="container">
+     <div class="panel panel-primary">
+			<div class="panel-heading">
   <h2 style="text-align: center">Category Management</h2>       
-  <table class="table table-striped">
+  <table class="table table-bordered table-hover">
     <thead>
       <tr>
           <th scope="col">Category Name</th>
@@ -72,6 +85,8 @@ if(isset($_POST['add'])){
     </tbody>
   </table>
 </div>
+     </div>
+        </div>
 <div style="margin: 20px;border: 1px solid gray; text-align: center; width: 50%; position: absolute; left: 50%; transform: translateX(-50%);">
       <h2 style="margin:20px; color:#FF0094; ">Add a new Toy</h2>
       <form method="POST" enctype="multipart/form-data">
