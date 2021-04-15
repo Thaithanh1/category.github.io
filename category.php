@@ -79,7 +79,7 @@ if(isset($_POST['add'])){
           <td><?=   $item['cat_name']       ?></td>
           <td><?=   $item['description']    ?></td>
           <td style="text-align: center;"><a href="update.php?edit=<?= $item['cat_name'] ?>"><span style="font-size: 20px;"><i style="color:#FF0094 ; " class="far fa-edit"></i></span></a></td>
-          <td style="text-align: center;"><buttom onclick="deleteCategory(<?= $item['cat_name'] ?>)"><i style="color:#FF0094 ; " class="far fa-trash-alt" ></i></buttom></td>
+          <td style="text-align: center;"><a href="category.php?del=<?= $item['description'] ?>"><span style="font-size: 20px;"><i style="color:#FF0094 ; " class="far fa-trash-alt" ></i></span></a></buttom></td>
         </tr>
         <?php } ?>       
     </tbody>
@@ -87,23 +87,7 @@ if(isset($_POST['add'])){
 </div>
      </div>
         </div>
-	<script type="text/javascript">
-		function deleteCategory(cat_name){
-			var option = confirm('Bạn có muốn xoá sản phẩm này không');
-			if (!option) {
-				return;
-			}
-			console.log(cat_name)
-			//ajax - lenh post
-			$.post('ajax.php', {
-				'cat_name': cat_name,
-				'action': 'delete',
-			}, function(data){
-				location.reload()
-			}
-			)
-		}
-	</script>
+	
 <div style="margin: 20px;border: 1px solid gray; text-align: center; width: 50%; position: absolute; left: 50%; transform: translateX(-50%);">
       <h2 style="margin:20px; color:#FF0094; ">Add a new Toy</h2>
       <form method="POST" enctype="multipart/form-data">
