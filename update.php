@@ -5,11 +5,12 @@
   $row = pg_fetch_array($query);
 
   if(isset($_POST['update'])){
+    $cat = $_GET['edit'];
     $cat      =  $_POST['cat_name'];
     $des      =  $_POST['des'];
     $sql= " UPDATE category SET description='$des'cat_name='$cat' WHERE cat_name=$cat";
     if ($query = pg_query($conn, $sql)) {
-      header("location:product.php");
+      header("location:category.php");
       function_alert('Added! success fully!');
     }
     else{
