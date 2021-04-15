@@ -74,8 +74,8 @@ if(isset($_POST['add'])){
           <th scope="col">Address</th>
           <th scope="col">CellPhone</th>
           <th scope="col">TotalPrice</th>
-          <th scope="col">Updated_at</th>
           <th scope="col">Pay</th>
+          <th scope="col">Updated_at</th>
           <th style="text-align: center;" scope="col" colspan="2">Action</th>
       </tr>
     </thead>
@@ -90,8 +90,8 @@ if(isset($_POST['add'])){
           <td><?=   $item['customer_address']       ?></td>
           <td><?=   $item['customer_phone']       ?></td>
           <td><?= number_format($item['total_price'],2) ?> $</td>
-          <td><?= $item['date_modified'] ?></td>
-          <td><?=   $item['pay']  ?></td>
+          <td><?= $item['pay'] ?></td>
+          <td><?=   $item['date_modified']  ?></td>
           <td style="text-align: center;"><a href="updatedr.php?edit=<?= $item['orderid'] ?>"><span style="font-size: 20px;"><i style="color:#FF0094 ; " class="far fa-edit"></i></span></a></td>
           <td style="text-align: center;"><a href="order.php?del=<?= $item['orderid'] ?>"><span style="font-size: 20px;"><i style="color:#FF0094 ; " class="far fa-trash-alt"></i></span></a></td>
         </tr>
