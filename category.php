@@ -88,7 +88,7 @@ if(isset($_POST['add'])){
      </div>
         </div>
 	<script type="text/javascript">
-		function deleteProduct(cat_name){
+		function deleteCategory(cat_name){
 			var option = confirm('Bạn có muốn xoá sản phẩm này không');
 			if (!option) {
 				return;
