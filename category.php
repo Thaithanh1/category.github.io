@@ -79,7 +79,7 @@ if(isset($_POST['add'])){
           <td><?=   $item['cat_name']       ?></td>
           <td><?=   $item['description']    ?></td>
           <td style="text-align: center;"><a href="update.php?edit=<?= $item['cat_name'] ?>"><span style="font-size: 20px;"><i style="color:#FF0094 ; " class="far fa-edit"></i></span></a></td>
-          <td style="text-align: center;"><span style="font-size: 20px;"><i style="color:#FF0094 ; " class="far fa-trash-alt" onclick="deleteCategory(<?= $item['cat_name'] ?>)"></i></span></td>
+          <td style="text-align: center;"><span style="font-size: 20px;" onclick="deleteCategory(<?= $item['cat_name'] ?>)"><i style="color:#FF0094 ; " class="far fa-trash-alt" ></i></span></td>
         </tr>
         <?php } ?>       
     </tbody>
