@@ -24,7 +24,7 @@ if(isset($_POST['add'])){
       $date     =  date("Y-m-d"); 
       $price    =  $_POST['price'];
       $cAddress      =  $_POST['customer_address'];
-      $cPhone    =  $_FILES['customer_phone'];
+      $cPhone    =  $_POST['customer_phone'];
       $pay    = $_POST['pay']
       $sql= "INSERT INTO orders (customer_name, customer_address, total_price, date_modified, customer_phone, pay) VALUES($cName, $cAddress, $price, $date, $cPhone, $pay)";
       if ($query = pg_query($conn, $sql)) {
@@ -36,7 +36,7 @@ if(isset($_POST['add'])){
       }
 }      
  ?>
-<!-- Latest compiled and minified CSS -->
+	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
 	<!-- jQuery library -->
@@ -98,8 +98,8 @@ if(isset($_POST['add'])){
         <?php } ?>       
     </tbody>
   </table>
-        <div class="panel panel-primary">
-			<div class="panel-heading">
+	   </div>
+	 </div>
 </div>
 <div style="margin: 20px;border: 1px solid gray; text-align: center; width: 50%; position: absolute; left: 50%; transform: translateX(-50%);">
       <h2 style="margin:20px; color:#FF0094; ">Add a new Order</h2>
