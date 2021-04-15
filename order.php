@@ -66,7 +66,7 @@ if(isset($_POST['add'])){
    <div class="panel panel-primary">
 			<div class="panel-heading">
   <h2 style="text-align: center">Order Management</h2>       
-  <table class="table table-striped">
+  <table class="table table-bordered table-hover">
     <thead>
       <tr>
           <th scope="col">ID</th>
