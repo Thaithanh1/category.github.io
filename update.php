@@ -6,9 +6,9 @@
 
   if(isset($_POST['update'])){
     $cat = $_GET['edit'];
-    $cat      =  $_POST['cat_name'];
+    $catt      =  $_POST['cat_name'];
     $des      =  $_POST['des'];
-    $sql= " UPDATE category SET description='$des'cat_name='$cat' WHERE cat_name=$cat";
+    $sql= " UPDATE category SET description='$des'cat_name='$catt' WHERE cat_name=$cat";
     if ($query = pg_query($conn, $sql)) {
       header("location:category.php");
       function_alert('Added! success fully!');
