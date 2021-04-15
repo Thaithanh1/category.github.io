@@ -1,6 +1,6 @@
 <?php 
   include("menu.php");
-  $cat = $_GET['cat_name'];
+  $cat = $_GET['edit'];
   $query = pg_query($conn, "SELECT * FROM category WHERE cat_name = $cat");
   $row = pg_fetch_array($query);
 
