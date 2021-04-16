@@ -1,5 +1,6 @@
 <?php 
     include("menu.php");
+    require_once ('utility.php');
     function function_alert($message) { 
          // Display the alert box  
         echo "<script>alert('$message');</script>"; 
@@ -62,45 +63,77 @@ if(isset($_POST['add'])){
     }
   
  </style>
- <div class="container">
-   <div class="panel panel-primary">
+ <body>
+	<div class="container">
+		<div class="panel panel-primary">
 			<div class="panel-heading">
-  <h2 style="text-align: center">Order Management</h2>       
-  <table class="table table-bordered table-hover">
-    <thead>
-      <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Name</th>
-          <th scope="col">Address</th>
-          <th scope="col">CellPhone</th>
-          <th scope="col">TotalPrice</th>
-          <th scope="col">Pay</th>
-          <th scope="col">Updated_at</th>
-          <th style="text-align: center;" scope="col" colspan="2">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-        <?php
-            $query = pg_query($conn, "SELECT * FROM orders");
-            while ($item = pg_fetch_array($query)){ 
-        ?>
-        <tr>
-          <th scope="row"><?= $item['orderid'] ?></th>
-          <td><?=   $item['customer_name']   ?></td>
-          <td><?=   $item['customer_address']       ?></td>
-          <td><?=   $item['customer_phone']       ?></td>
-          <td><?= number_format($item['total_price'],2) ?> $</td>
-          <td><?= $item['pay'] ?></td>
-          <td><?=   $item['date_modified']  ?></td>
-          <td style="text-align: center;"><a href="updatedr.php?edit=<?= $item['orderid'] ?>"><span style="font-size: 20px;"><i style="color:#FF0094 ; " class="far fa-edit"></i></span></a></td>
-          <td style="text-align: center;"><a href="order.php?del=<?= $item['orderid'] ?>"><span style="font-size: 20px;"><i style="color:#FF0094 ; " class="far fa-trash-alt"></i></span></a></td>
-        </tr>
-        <?php } ?>       
-    </tbody>
-  </table>
-	   </div>
-	 </div>
-</div>
+				<h2 class="text-center">Order Management</h2>
+			</div>
+			<div class="pannel-body">
+				
+<table class="table table-bordered table-hover">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Customer Name</th>
+			<th>Address</th>
+			<th>CellPhone</th>
+			<th>Price</th>
+			<th>Pay</th>
+			<th>Updated_at</th>
+			<th width="50px"></th>
+			<th width="50px"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php
+		//lay danh sach danh muc tu database
+		$limit = 15;
+		$page = 1;
+		if (isset($_GET['page'])) {
+			$page = $_GET['page'];
+		}
+		if ($page <= 0 ) {
+			$page = 1;
+		}
+		$firstIndex = ($page-1)*$limit;
+		$sql = 'select * from orders where 1 limit '.$firstIndex.','.$limit;
+		$productList = executeResult($sql);
+		$sql = 'select count(id) as total from orders where 1 ';
+		$countResult = executeSingleResult($sql);
+		$number = 0;
+		if ($countResult != null) {
+		$count = $countResult['total'];
+		$number = ceil($count/$limit);
+
+		}
+		$index = 1;
+		foreach ($productList as $item){
+			echo'
+				<tr>
+					<td>'.(++$firstIndex).'</td>
+					<td>'.$item['customer_name'].'</td>
+					<td>'.$item['customer_address'].'</td>
+					<td>'.$item['customer_phone'].'</td>
+					<td>'.$item['total_price'].'</td>
+					<td>'.$item['pay'].'</td>
+					<td>'.$item['date_modified'].'</td>
+					<td>
+						<a href="add.php?id='.$item['orderid'].'"><buttom class="btn btn-warning">Sửa</buttom></a>
+					</td>
+					<td>
+						<buttom class="btn btn-danger" onclick="deleteOrder('.$item['orderid'].')">Xoá</buttom>
+					</td>
+				</tr>';
+		}
+		?>
+	</tbody>
+</table>
+			 <!--Bai toan phan trang-->
+			 <?=pagination($number, $page, '')?>
+			</div>
+		</div>
+	</div>
 <div style="margin: 20px;border: 1px solid gray; text-align: center; width: 50%; position: absolute; left: 50%; transform: translateX(-50%);">
       <h2 style="margin:20px; color:#FF0094; ">Add a new Order</h2>
       <form method="POST" enctype="multipart/form-data">
