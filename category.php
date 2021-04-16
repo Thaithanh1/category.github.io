@@ -97,6 +97,6 @@ if(isset($_POST['add'])){
         <label>Description :</label>
         <textarea name="des" cols="30"></textarea><br>
 
-        <input style="width: 20%; margin: 10px;" type="submit" name="add" value="Add Song">
+        <input style="width: 20%; margin: 10px;" type="submit" name="add" value="Add Category">
       </form>
     </div>
